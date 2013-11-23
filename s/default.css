@@ -1,6 +1,6 @@
 body {
   background: url(/favicon.ico) -32px repeat-y, url(/s/ricepaper.png);
-  font: 100%/1.5 Arial;
+  font: 100%/1.5 'ヒラギノ角ゴ Pro W3', 'HiraKakuPro-W3', 'HiraKakuProN-W3', Meiryo, Arial;
 }
 
 h1, h2, h3, h4, h5, h6, h7 {
@@ -9,7 +9,7 @@ h1, h2, h3, h4, h5, h6, h7 {
   padding: 0.5em 1em;
   margin: 0 0 0 2em;
   border-radius: 20px 0 0 20px;
-  box-shadow: inset 5px 5px 0px rgba(0,0,0,0.2)
+  box-shadow: inset 5px 5px 0px rgba(0,0,0,0.2);
 }
 
 h1 {
@@ -74,10 +74,6 @@ li {
 .text {
   margin: 0 10% 0 5%;
   background-color: white;
-}
-
-#markdown-toc li {
-  font-size:
 }
 
 /* settings for code prettify */
