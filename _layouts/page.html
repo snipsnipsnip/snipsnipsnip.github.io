@@ -1,4 +1,11 @@
 ---
 layout: default
+date: 2013-11-24 02:32
 ---
-<div class="text">{{ content }}</div>
+<div class="text">
+<h1><a href="{{page.url}}">{{page.title}}</a></h1>
+{% if page.date %}
+<a class="info" href="{{page.url}}">{{page.date}}</a>
+{% endif %}
+{{ content }}
+</div>
