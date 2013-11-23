@@ -1,5 +1,5 @@
 body {
-  background: url(/favicon.ico) -32px repeat-y, url(/s/ricepaper.png);
+  background: url(/favicon.ico) -34px repeat-y, url(/s/ricepaper.png);
   font: 100%/1.5 'ヒラギノ角ゴ Pro W3', 'HiraKakuPro-W3', 'HiraKakuProN-W3', Meiryo, Arial;
 }
 
@@ -26,12 +26,30 @@ p {
 
 pre, ul, ol, dl {
   margin: 1em 3em 1em 3em;
-  padding: 0;
 }
 
-ul ul, ul ol, ol ul {
-  margin-top: 0;
-  margin-bottom: 0;
+dl {
+  border-left: 3px double gray;
+}
+
+dt {
+  font-weight: bold;
+  padding: 0.2em 0 0.2em 0.5em;
+  color: #080;
+  margin-left: 1px;
+  margin-top: 0.5em;
+  border-left: 3px double gray;
+}
+
+ul ul, ul ol, ol ul, ol ol {
+  margin: 0 0 0 3em;
+  padding-left: 0;
+  border-left: none;
+}
+
+ul p, ol p {
+  text-indent: 0;
+  margin: 0;
 }
 
 pre {
@@ -51,6 +69,10 @@ code {
   padding: 0.3em;
   margin: 0 0.5em;
   border: 1px gray solid;
+}
+
+strike {
+  color: #666;
 }
 
 li {
