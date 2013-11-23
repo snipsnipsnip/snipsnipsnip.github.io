@@ -2,4 +2,15 @@
 <meta charset="utf-8">
 <title>{{ page.title }} - snipsnipsnip.github.io</title>
 <link rel="stylesheet" href="s/default.css">
-</head><body><div id="body">{{ content }}</div></body></html>
+<link rel="stylesheet" href="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.css">
+</head><body><div id="body">{{ content }}</div>
+<script type="text/javascript" src="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.js"></script><script>
+addEventListener('load', function() {
+  var pre = document.getElementsByTagName("pre")
+  for (var i=0; i<pre.length; i++)
+  {
+    pre[i].className = "prettyprint linenums"
+  }
+  prettyPrint()
+}, false);
+</script></body></html>
