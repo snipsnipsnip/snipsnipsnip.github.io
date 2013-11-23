@@ -3,12 +3,12 @@ layout: default
 title: index
 ---
 <div class="text">
-<h1>snipsnipsnip</h1>
+<h1><a href="{{site.repos_url}}">{{site.title}}</a></h1>
 <h2>pages</h2>
 <div class="group">
 {% for page in site.pages %}
   {% if page.title != null and page.title != "index" %}
-    <h3><a href="{{page.url}}">{{page.title}}</a></h3>
+    <a class="giant" href="{{page.url}}">{{page.title}}</a>
     {% if page.date %}
       <span class="info">{{page.date}}</span>
     {% endif %}
@@ -22,8 +22,17 @@ title: index
 <div class="group">
 {% for post in site.posts %}
   {% if post.title != null %}
-    <h3><a href="{{post.url}}">{{post.title}}</a></h3>
+    <a class="giant" href="{{post.url}}">{{post.title}}</a>
+    {% if post.date %}
+      <span class="info">{{post.date}}</span>
+    {% endif %}
+    {% if post.excerpt %}
+      <p>{{ post.excerpt | markdownify }}</p>
+    {% endif %}
   {% endif %}
 {% endfor %}
 </div>
+<h2>other</h2>
+<p><a class="giant" href="/atom.xml">Atom feed</a></p>
+<p><a class="giant" href="{{site.repos_url}}">Fork me on GitHub</a></p>
 </div>
