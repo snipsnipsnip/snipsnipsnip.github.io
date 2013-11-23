@@ -1,1 +1,6 @@
+safe: true
 markdown: kramdown
+
+title: snipsnipsnip.github.io
+author: snipsnipsnip
+url_root: http://snipsnipsnip.github.io
