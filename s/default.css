@@ -76,6 +76,39 @@ li {
   background-color: white;
 }
 
+.no_toc#section {
+  display: none;
+}
+
+#markdown-toc {
+  position: fixed;
+  right: 0;
+  top: 0;
+  background: url(/favicon.ico);
+  list-style-position: inside;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  width: 48px;
+  height: 48px;
+}
+
+#markdown-toc li {
+  display: none
+}
+
+#markdown-toc:hover {
+  background: white url(/favicon.ico) no-repeat 100% 0;
+  padding: 1em;
+  overflow: auto;
+  width: auto;
+  height: auto;
+}
+
+#markdown-toc:hover li {
+  display: list-item;
+}
+
 /* settings for code prettify */
 
 .prettyprint {
