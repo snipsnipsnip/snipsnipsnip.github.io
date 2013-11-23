@@ -145,11 +145,11 @@ li {
   padding: 0.1em 1em;
   background-color: #efe;
 }
-.linenums li:hover {
-  background-color: #ffd
-}
 .L1, .L3, .L5, .L7, .L9 {
   background-color: white !important;
+}
+.linenums li:hover {
+  background-color: #ffd !important;
 }
 .L4, .L9 {
   color: #191
