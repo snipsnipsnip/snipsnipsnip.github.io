@@ -2,11 +2,22 @@
 layout: default
 title: index
 ---
-<h1>pages</h1>
-<ul>
-{% for node in site.pages %}
-  {% if node.title != null %}
-  	<li><a href="{{node.url}}">{{node.title}}</a></li>
+<h1>snipsnipsnip</h1>
+<h2>pages</h2>
+<div class="group">
+{% for page in site.pages %}
+  {% if page.title != null and page.title != "index" %}
+    <h3><a href="{{page.url}}">{{page.title}}</a></h3>
+    <span class="date">{{page.date}}</span>
+    <p>{{ page.excerpt }}</p>
   {% endif %}
 {% endfor %}
-</ul>
+</div>
+<h2>posts</h2>
+<div class="group">
+{% for post in site.posts %}
+  {% if post.title != null %}
+    <h3><a href="{{post.url}}">{{post.title}}</a></h3>
+  {% endif %}
+{% endfor %}
+</div>

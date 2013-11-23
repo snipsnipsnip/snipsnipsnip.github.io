@@ -1,0 +1,15 @@
+body {
+  background: url(/favicon.ico) -40px repeat-y, url(/s/ricepaper.png);
+  font: medium/1 Arial;
+}
+
+h1, h2, h3, h4, h5, h6, h7 {
+  font-weight: normal;
+  background-color: white;
+  padding: 0.5em;
+  margin: 0 0 0 2em;
+}
+
+p {
+  background-color: white;
+}
