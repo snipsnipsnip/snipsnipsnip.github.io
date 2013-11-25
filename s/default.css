@@ -1,5 +1,6 @@
 body {
   background: url(/favicon.ico) -34px repeat-y, url(/s/ricepaper.png);
+  margin: 0;
 }
 
 h1, h2, h3, h4, h5, h6, h7, .giant {
@@ -95,33 +96,39 @@ li {
 /* menu */
 
 #menu {
-  position: fixed;
-  left: 0;
-  top: 0;
-  background: url(/favicon.ico);
+  background: url(/favicon.ico) no-repeat;
   list-style-position: inside;
-  padding: 0;
-  margin: 0;
-  overflow: hidden;
-  width: 48px;
-  height: 48px;
+  list-style-type: none;
 }
 
-#menu a {
-  display: none
-}
+@media (min-width : 800px) {
+  #menu {
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    width: 48px;
+    height: 48px;
+  }
 
-#menu:hover {
-  background: white url(/favicon.ico) no-repeat 0 0;
-  overflow: auto;
-  width: auto;
-  height: auto;
-}
+  #menu a {
+    display: none
+  }
 
-#menu:hover a {
-  display: block;
-  margin: 0;
-  padding: 1em 1em 1em 4em;
+  #menu:hover {
+    background: white url(/favicon.ico) no-repeat 0 0;
+    overflow: auto;
+    width: auto;
+    height: auto;
+  }
+
+  #menu:hover a {
+    display: block;
+    margin: 0;
+    padding: 1em 1em 1em 4em;
+  }
 }
 
 /* page/post */
@@ -134,9 +141,15 @@ li {
   padding: 0.5em}
 
 .text {
-  margin: 5% 10% 0 5%;
-  padding: 0 0 5% 0;
   background-color: white;
+  padding: 0 0 5% 0;
+  margin: 5% 0;
+}
+
+@media (min-width : 800px) {
+  .text {
+    margin: 5% 10% 0 5%;
+  }
 }
 
 /* settings for code prettify */

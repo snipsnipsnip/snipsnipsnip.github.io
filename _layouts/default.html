@@ -7,7 +7,12 @@
 <link type="application/atom+xml" rel="alternate" href="/atom.xml">
 </head><body>
 <div id="body">{{ content }}</div>
-<div id="menu"><a href="/">snipsnipsnip.github.io</a></div>
+<ul id="menu">
+  <li><a href="/">snipsnipsnip.github.io</a></li>
+  {% if page or post %}
+    <li><a href="{{site.repos_url}}/commits/master/{% if page %}{{page.path}}{% else %}{{post.path}}{% endif %}">See history of this page</a></li>
+  {% endif %}
+</ul>
 <script type="text/javascript" src="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.js"></script><script>
 addEventListener('load', function() {
   var pre = document.getElementsByTagName("pre")
