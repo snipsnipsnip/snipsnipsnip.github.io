@@ -2,8 +2,7 @@
 layout: page
 title: dollar-expression ($式)
 date: 2013-11-24 02:32
-excerpt: 
-  $式(どるしき)は、閉じ括弧を省略できるS式の構文糖です。
+excerpt: 閉じ括弧を省略できるS式の構文糖を考えた。
 ---
 
 ~~~
@@ -44,19 +43,17 @@ $ define $ partition pred lis
 
 [上のような文法を普通のS式にする変換器をGaucheで書いてみた](https://gist.github.com/snipsnipsnip/7620314)。
 
-$式(どるしき)という、閉じ括弧を省略できるS式の構文糖を考えた。
+$式(どるしき)という、閉じ括弧を省略できるS式の構文糖を考えた。インデントの具合から閉じ括弧の位置を推測する。
 
 S式と$式はJSONと(ややこしくない範囲の)YAMLのような関係にある。$式のパーサはS式のパーサとしてそのまま使える。この構文糖の目的はインデントで表せる分のS式の閉じ括弧を省略すること _だけ_ であって、S式以外の構造を表すものではないし、括弧を完全に排除することでもないし、Lispを他のプログラム言語らしく見せかけるためでもない。
 
-インデントを使った文法
-
-筆者は[Gauche](http://practical-scheme.net/gauche/index.html) (Scheme)の文法を念頭において考えている。
+以下[Gauche](http://practical-scheme.net/gauche/index.html) (Scheme)の文法を念頭において考えている。
 
 ## 適当な定義
 
 $式の字句構造はほぼS式と同様。
 
-ただし、`$`を「開き括弧マーカー」と呼び、特別に扱う。
+ただし、`$`を「開き括弧マーカー」と呼び、特別に扱う。(最初`(`でやっていたがエディタが混乱したのでやめた)
 
 イメージとしては、$式用の`(read)`関数はこういう動作をする。
 
@@ -375,7 +372,7 @@ A3 (没)
 
 ## その他
 
-### インデントに意味があるプログラミング言語
+### インデントに意味がある構文
 
 [Haskell](http://www.haskell.org/onlinereport/haskell2010/haskellch2.html#x7-210002.7)。は空白に意味を持たない`{...}`と`;`による文法を基礎として、構文糖としてインデントを元に区切り記号を補うという形で定義している。この方法が好きなので$式もそれにならった。
 
@@ -385,11 +382,7 @@ A3 (没)
 
 PythonとCoffeeScriptは「ブロックの途中で半端にインデントを増減してはならない」というチェックがあるのが親切。これは$式と関係なく作れると思うのと、`let`などをどう扱えばよいのかわからないので割愛。
 
-### S式の構文糖
-
-[SRFI 49: Indentation-sensitive syntax](http://srfi.schemers.org/srfi-49/srfi-49.html)と[SRFI 110: Sweet-expressions](http://srfi.schemers.org/srfi-110/srfi-110.html)（[Readable Lisp S-expressions Project](http://readable.sourceforge.net/)）がある。この仕様での`$`はHaskellと同じく中置のようだ。
-
-これらは行頭の開き括弧を暗黙にしようとしているのが気に入らない。
+Lisp系では、[SRFI 49: Indentation-sensitive syntax](http://srfi.schemers.org/srfi-49/srfi-49.html)と[SRFI 110: Sweet-expressions](http://srfi.schemers.org/srfi-110/srfi-110.html)（[Readable Lisp S-expressions Project](http://readable.sourceforge.net/)）がある。正確にはこれはSchemeのための構文糖であって、S式のための構文糖である$式とは少し目的が違う。この2つは行頭の開き括弧を暗黙にしようとしているのが気に入らない。
 
 ~~~
 define factorial(n)
@@ -406,9 +399,9 @@ define factorial(n)
 
 文法としてのS式について。
 
-* [C2 Wiki:Indentation Equals Grouping](http://c2.com/cgi/wiki?IndentationEqualsGrouping)
+* [C2 Wiki:Syntactically Significant Whitespace Considered Harmful](http://c2.com/cgi/wiki?SyntacticallySignificantWhitespaceConsideredHarmful)
 
-インデントを使った文法の長所短所について。
+構文にホワイトスペースを使うことについて。
 
 ### TODO
 
