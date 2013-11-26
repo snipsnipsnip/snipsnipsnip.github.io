@@ -185,3 +185,16 @@ li {
 .L4, .L9 {
   color: #191
 }
+
+/* disqus */
+#disqus_thread {
+  background-color: white;
+  padding: 1em 5%;
+  margin: 5% 0 0 0;
+}
+
+@media (min-width : 800px) {
+  #disqus_thread {
+    margin: 2em 20% 0 20%;
+  }
+}
