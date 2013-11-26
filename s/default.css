@@ -69,6 +69,7 @@ pre {
 a{
   text-decoration: none}
 a:hover{
+  color: #f50;
   text-decoration: underline}
 code {
   background-color: #efe;
@@ -84,6 +85,15 @@ pre code {
 }
 
 strike {
+  color: #666;
+}
+
+cite:before {
+  content: '\002015';
+  margin: 0 0.5em;
+}
+
+cite {
   color: #666;
 }
 
