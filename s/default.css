@@ -128,7 +128,7 @@ li {
   }
 
   #menu:hover {
-    background: white url(/favicon.ico) no-repeat 0 0;
+    background: rgba(255, 255, 255, 0.9) url(/favicon.ico) no-repeat 0 0;
     overflow: auto;
     width: auto;
     height: auto;
