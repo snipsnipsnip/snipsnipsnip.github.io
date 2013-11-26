@@ -1,6 +1,6 @@
 <!doctype html><html lang="ja"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>{{ page.title }} - snipsnipsnip.github.io</title>
+<title>{{ page.title }} - {{site.title}}</title>
 <link rel="shortcut icon" href="/favicon.ico" />
 <link rel="stylesheet" href="s/default.css">
 {% if site.enable_google_code_prettify %}<link rel="stylesheet" href="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.css">{% endif %}
@@ -8,7 +8,7 @@
 </head><body>
 <div id="body">{{ content }}</div>
 <ul id="menu">
-  <li><a href="/">snipsnipsnip.github.io</a></li>
+  <li><a href="/">{{site.title}}</a></li>
   {% if page or post %}
     <li><a href="{{site.repos_url}}/commits/master/{% if page %}{{page.path}}{% else %}{{post.path}}{% endif %}">See history of this page</a></li>
   {% endif %}
