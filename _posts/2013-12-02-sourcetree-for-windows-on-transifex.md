@@ -5,7 +5,7 @@ title: SourceTree for Windowsの翻訳に参加した
 
 https://www.transifex.com/projects/p/sourcetree-for-windows/
 
-アナウンスは特になかったが、参加が許可制でないようなので勝手に参加して作業した。Mac版から引き継ぐ用意もあっただろうに悪いことをしたと思う。
+アナウンス前に勝手に参加して作業した。Mac版から引き継ぐ用意もあっただろうに悪いことをしたと思う。
 
 ![Screen Shot](https://bytebucket.org/snipsnipsnip/sourcetree.resources.ja/wiki/working.png)
 
