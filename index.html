@@ -7,21 +7,19 @@ title: index
 <h2>pages</h2>
 <div class="group">
 {% for page in site.pages %}
-  {% if page.title != null and page.title != "index" %}
+  {% if page.title and page.excerpt %}
     <a class="giant" href="{{page.url}}">{{page.title}}</a>
     {% if page.date %}
       <span class="info">{{page.date}}</span>
     {% endif %}
-    {% if page.excerpt %}
-      <p>{{ page.excerpt | markdownify }}</p>
-    {% endif %}
+    <p>{{ page.excerpt | markdownify }}</p>
   {% endif %}
 {% endfor %}
 </div>
 <h2>posts</h2>
 <div class="group">
 {% for post in site.posts %}
-  {% if post.title != null %}
+  {% if post.title %}
     <a class="giant" href="{{post.url}}">{{post.title}}</a>
     {% if post.date %}
       <span class="info">{{post.date}}</span>
