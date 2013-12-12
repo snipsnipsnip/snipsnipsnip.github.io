@@ -103,6 +103,11 @@ li {
   line-height: 1.3;
 }
 
+p img {
+  width: 50%;
+  margin: 1em;
+}
+
 /* menu */
 
 #menu {
