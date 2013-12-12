@@ -11,6 +11,7 @@
   <li><a href="/">{{site.title}}</a></li>
   {% if page or post %}
     <li><a href="{{site.repos_url}}/commits/master/{% if page %}{{page.path}}{% else %}{{post.path}}{% endif %}">See history of this page</a></li>
+    <li><a href="{{site.repos_url}}/edit/master/{% if page %}{{page.path}}{% else %}{{post.path}}{% endif %}">Edit this page</a></li>
   {% endif %}
 </ul>
 {% if site.enable_google_code_prettify %}
