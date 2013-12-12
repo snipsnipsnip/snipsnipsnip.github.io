@@ -1,13 +1,17 @@
 ---
 layout: page
 title: SourceTree for Windowsの翻訳に参加した
+date: 2013-12-02 12:00+0900
 ---
 
 [Transifex](https://www.transifex.com/projects/p/sourcetree-for-windows/)にSourceTree for Windowsの翻訳プロジェクトが今月初め頃に立ち上がったのを見つけて、アナウンスもされない内に勝手に参加して作業した。Mac版からリソースを引き継ぐ用意もあっただろうに悪いことをしたと思う。
 
+* toc
+{:toc}
+
 [![Screen Shot](https://bytebucket.org/snipsnipsnip/sourcetree.resources.ja/wiki/working.png)](https://bytebucket.org/snipsnipsnip/sourcetree.resources.ja/wiki/working.png)
 
-今のところ作業で勝手に判断したもの。
+## 作業中勝手に判断したもの
 
 * キャッシュとインデックスとステージ
 
