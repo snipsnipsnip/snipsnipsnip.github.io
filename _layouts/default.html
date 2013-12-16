@@ -6,7 +6,6 @@
 {% if site.enable_google_code_prettify %}<link rel="stylesheet" href="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.css">{% endif %}
 <link type="application/atom+xml" rel="alternate" href="/atom.xml">
 </head><body>
-<div id="body">{{ content }}</div>
 <ul id="menu">
   <li><a href="/">{{site.title}}</a></li>
   {% if page or post %}
@@ -14,6 +13,7 @@
     <li><a href="{{site.repos_url}}/edit/master/{% if page %}{{page.path}}{% else %}{{post.path}}{% endif %}">Edit this page</a></li>
   {% endif %}
 </ul>
+<div id="body">{{ content }}</div>
 {% if site.enable_google_code_prettify %}
 <script type="text/javascript" src="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.js"></script><script>
 addEventListener('load', function() {
