@@ -4,6 +4,7 @@ title: index
 ---
 <div class="text">
 <h1><a href="{{site.repos_url}}">{{site.title}}</a></h1>
+<section>
 <h2>pages</h2>
 <ul class="group">
 {% for page in site.pages | sort: 'date' reversed %}
@@ -21,6 +22,8 @@ title: index
   {% endif %}
 {% endfor %}
 </ul>
+</section>
+<section>
 <h2>posts</h2>
 <ul class="group">
 {% for post in site.posts | sort: 'date' reversed %}
@@ -40,9 +43,13 @@ title: index
   {% endif %}
 {% endfor %}
 </ul>
-<h2>other</h2>
+</section>
+<section>
+<h2>links</h2>
 <ul class="group">
-<li><a class="giant" href="/atom.xml">Atom feed</a></li>
 <li><a class="giant" href="{{site.repos_url}}">Fork me on GitHub</a></li>
-<li><a class="giant" href="https://twitter.com/snipsnipsnip">@snipsnipsnip</a></li>
+<li><a class="giant" href="https://twitter.com/snipsnipsnip">twitter: @snipsnipsnip</a></li>
+<li><a class="giant" href="http://snipsnipsnip.tumblr.com">snipsnipsnip.tumblr.com</a></li>
+<li><a class="giant" href="/atom.xml">Atom feed</a></li>
 </ul>
+</section>
