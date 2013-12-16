@@ -1,10 +1,13 @@
 ---
 layout: page
 title: SourceTree for Windowsの翻訳に参加した
-date: 2013-12-02 12:00+0900
+date: 2013-12-02 12:00
+image: https://bytebucket.org/snipsnipsnip/sourcetree.resources.ja/wiki/working.png
 ---
 
 [Transifex](https://www.transifex.com/projects/p/sourcetree-for-windows/)にSourceTree for Windowsの翻訳プロジェクトが今月初め頃に立ち上がったのを見つけて、アナウンスもされない内に勝手に参加して作業した。Mac版からリソースを引き継ぐ用意もあっただろうに悪いことをしたと思う。
+
+日本語化を試したい人は[こちら](https://bitbucket.org/snipsnipsnip/sourcetree.resources.ja)を参照。
 
 * toc
 {:toc}
@@ -45,5 +48,5 @@ gitのfetch＝hgのpull、gitのpull＝hgのrebaseという妙な関係にある
 
 ## 日本語化してSourcetree for Windowsが使えるよ
 
-幸いリソースDLLをビルドするキットを作っている人([@koty氏](https://bitbucket.org/koty/sourcetree.resources.ja))がいたので、すぐに試すことができた。日本語化を試したい人は[こちら記事](https://bitbucket.org/snipsnipsnip/sourcetree.resources.ja)を参照。
+幸いリソースDLLをビルドするキットを作っている人([@koty氏](https://bitbucket.org/koty/sourcetree.resources.ja))がいたので、すぐに試すことができた。日本語化を試したい人は[こちら](https://bitbucket.org/snipsnipsnip/sourcetree.resources.ja)を参照。
 
