@@ -5,32 +5,44 @@ title: index
 <div class="text">
 <h1><a href="{{site.repos_url}}">{{site.title}}</a></h1>
 <h2>pages</h2>
-<div class="group">
-{% for page in site.pages %}
+<ul class="group">
+{% for page in site.pages | sort: 'date' reversed %}
   {% if page.title and page.excerpt %}
+  <li>
     <a class="giant" href="{{page.url}}">{{page.title}}</a>
     {% if page.date %}
-      <span class="info">{{page.date}}</span>
+      <a class="info" href="{{page.url}}">{{page.date}}</a>
+    {% endif %}
+    {% if page.image %}
+      <img src="{{page.image}}" alt="{{page.title}}" />
     {% endif %}
     <p>{{ page.excerpt | markdownify }}</p>
+  </li>
   {% endif %}
 {% endfor %}
-</div>
+</ul>
 <h2>posts</h2>
-<div class="group">
-{% for post in site.posts %}
+<ul class="group">
+{% for post in site.posts | sort: 'date' reversed %}
   {% if post.title %}
+  <li>
     <a class="giant" href="{{post.url}}">{{post.title}}</a>
     {% if post.date %}
-      <span class="info">{{post.date}}</span>
+      <a class="info" href="{{page.url}}">{{post.date}}</a>
+    {% endif %}
+    {% if post.image %}
+      <a href="{{post.url}}"><img src="{{post.image}}" alt="{{post.title}}" /></a>
     {% endif %}
     {% if post.excerpt %}
       <p>{{ post.excerpt | markdownify }}</p>
     {% endif %}
+  </li>
   {% endif %}
 {% endfor %}
-</div>
+</ul>
 <h2>other</h2>
-<p><a class="giant" href="/atom.xml">Atom feed</a></p>
-<p><a class="giant" href="{{site.repos_url}}">Fork me on GitHub</a></p>
-</div>
+<ul class="group">
+<li><a class="giant" href="/atom.xml">Atom feed</a></li>
+<li><a class="giant" href="{{site.repos_url}}">Fork me on GitHub</a></li>
+<li><a class="giant" href="https://twitter.com/snipsnipsnip">@snipsnipsnip</a></li>
+</ul>
