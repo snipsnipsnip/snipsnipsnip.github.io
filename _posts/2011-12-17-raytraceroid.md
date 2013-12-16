@@ -1,5 +1,5 @@
 ---
-layout: date
+layout: page
 title: レイトレーサーもどき
 date: 2011-12-17 04:07
 image: https://gist.github.com/snipsnipsnip/1369770/raw/2983e02b3293e5956cd9551923b1aa76acdcebe3/_ss.gif
