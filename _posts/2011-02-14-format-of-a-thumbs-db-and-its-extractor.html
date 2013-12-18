@@ -1,0 +1,88 @@
+---
+layout: page
+title: Thumbs.dbのフォーマット調べて抽出ツール作った
+date: 2011-02-14 02:26+0900
+excerpt: <a href="https://gist.github.com/raw/819809/7df6a9196a000caab8e9383b897a3d75ccb890b1/dumpthumbs.exe">dumpthumbs.exe</a><br/>要はアーカイブの一種らしい。
+---
+<ul><li><a href="https://gist.github.com/raw/819809/7df6a9196a000caab8e9383b897a3d75ccb890b1/dumpthumbs.exe">ダウンロード: dumpthumbs.exe</a></li></ul>
+
+thumbs.dbがあるフォルダか、thumbs.db自体をこのツールにドラッグして使う。その場にjpgファイルが吐き出される。
+
+<h3>概要</h3>
+
+WindowsのThumbs.dbはOLE Compound Documentとか<a href="http://msdn.microsoft.com/en-us/library/aa380369(VS.85).aspx">Structured Storage</a>という形式でできている。Wordのdocファイルにも使われていて、要はアーカイブの一種らしい。
+
+OLE形式のことは割愛。ここではそのOLEなる形式でどういうファイルが入っているかだけ書く。
+
+これを読み込むライブラリは、Rubyではruby-oleジェム、PerlならWin32::OLE、JavaならApache POIのPOIFS、CならCOMのIStorageとかPOLEというライブラリがある。
+
+<h3>ディレクトリの内容</h3>
+そのたぐいのライブラリで解凍すると、中身のディレクトリはこうなっている。フォルダはなく、いくつかバイナリファイルが入っているだけ。
+<ul>
+	<li>Catalog</li>
+	<li>01</li>
+	<li>1</li>
+	<li>11</li>
+	<li>2</li>
+	<li>21</li>
+	<li>3</li>
+	<li>4</li>
+	<li>5</li>
+	<li>...</li>
+</ul>
+内容としては、名前が数字のファイルがJPEGファイルにヘッダがくっついたもので、Catalogにその数字と実ファイル名の対応付けが記録されている。
+
+各サムネイルにはIDがついている。
+
+不思議なのはIDとファイル名が文字列として反転しているというところ。
+
+idが<strong>5</strong>のサムネイルは<strong>5</strong>というファイルに入っているが、idが<strong>13</strong>のサムネイルは<strong>31</strong>というファイルに入る。
+<h3>カタログ (<tt>Catalog</tt> ファイル)</h3>
+Catalogのフォーマットは先頭からこう。数値は全てUint32LE。
+<ul>
+	<li>ヘッダが16バイト
+<ul>
+	<li>4バイト～8バイト目にサムネイル数</li>
+</ul>
+</li>
+	<li>サムネイル数だけ以下を繰り返し（各エントリのサイズは不定）
+<ul>
+	<li>エントリ全体のサイズ</li>
+	<li>ID</li>
+	<li>更新日時</li>
+	<li>何かの数値</li>
+	<li>UTF16LEでファイル名</li>
+	<li>0でパディング</li>
+</ul>
+</li>
+</ul>
+<h3>サムネイル (<tt>0, 1, 11, 2, 21 ..</tt>)</h3>
+サムネイル画像のファイルの内容は以下のとおり。
+<ul>
+	<li>ヘッダ (12バイトか16バイト)</li>
+	<li>JPEGファイル</li>
+</ul>
+
+ヘッダの長さは可変というか、12バイトか16バイトかのどちらからしい。
+
+本来ならヘッダにあるタイプを調べるべきなのだろうが、とりあえずJPEGファイルの頭にあるマジックナンバー(<tt>0xFF 0xD8</tt>)を目印にすればヘッダの内容を読む必要はない。
+
+<h3>実装</h3>
+画像を吐き出すだけのツールを作るなら、流れはこうなる。
+<ul>
+	<li>Structured Storageのライブラリを使ってthumbs.dbを読み込む</li>
+	<li>Catalogファイルを取り出して上のフォーマットで解釈する</li>
+	<li>各ファイル名についてサムネイルを取り出し、JPEGファイルをその辺に書き出す</li>
+</ul>
+これをRubyとC++で書いた。
+<ul>
+	<li><a href="http://gist.github.com/818260">Ruby</a></li>
+	<li><a href="http://gist.github.com/819809">C++</a></li>
+	<li><a href="https://gist.github.com/raw/819809/7df6a9196a000caab8e9383b897a3d75ccb890b1/dumpthumbs.exe">dumpthumbs.exe: C++をコンパイルしたやつ</a></li>
+</ul>
+<h3>手抜き</h3>
+以上は<a href="http://libforensics.googlecode.com/">libforensics</a>というPythonのライブラリの<a href="http://www.google.com/codesearch/p?#yr8RazdpGoM/code/lf/win/shell/thumbsdb/objects.py"><tt>lf.win.shell.thumbsdb</tt>のコード</a>を読んだだけなので、このライブラリを使うのが一番早いかもしれない。
+
+こういった解体処理をする必要があるのは元のファイル名が欲しいときだけで、サムネイル画像を取り出したいだけならまじめに読み込む必要はない。
+
+無圧縮で暗号化もされていないので、thumbs.dbを普通に開き、JPEGのSOI(<tt>0xFF 0xD8</tt>)とEOI(<tt>0xFF 0xD9</tt>)を探して次々書き出せばすむ。

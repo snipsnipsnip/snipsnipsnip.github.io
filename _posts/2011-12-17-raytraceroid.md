@@ -3,7 +3,7 @@ layout: page
 title: レイトレーサーもどき
 date: 2011-12-17 04:07
 image: https://gist.github.com/snipsnipsnip/1369770/raw/2983e02b3293e5956cd9551923b1aa76acdcebe3/_ss.gif
-excerpt: SDLでレイトレーサーを作った。ぐぐりながら適当に作って詰まった。
+excerpt: <a href="https://gist.github.com/raw/1369770/1c7c58ef76b57fc72059fc10e89db2020bcc1b39/_ray.zip">SDLでレイトレーサーを作った</a>。ぐぐりながら適当に作って詰まった。
 ---
 
 [![dumb raytraceroid](https://gist.github.com/snipsnipsnip/1369770/raw/2983e02b3293e5956cd9551923b1aa76acdcebe3/_ss.gif)](https://gist.github.com/raw/1369770/1c7c58ef76b57fc72059fc10e89db2020bcc1b39/_ray.zip)

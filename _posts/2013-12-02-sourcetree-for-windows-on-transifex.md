@@ -5,7 +5,7 @@ date: 2013-12-02 12:00
 image: https://bytebucket.org/snipsnipsnip/sourcetree.resources.ja/wiki/working.png
 ---
 
-[Transifex](https://www.transifex.com/projects/p/sourcetree-for-windows/)にSourceTree for Windowsの翻訳プロジェクトが今月初め頃に立ち上がったのを見つけて、アナウンスもされない内に勝手に参加して作業した。Mac版からリソースを引き継ぐ用意もあっただろうに悪いことをしたと思う。
+[Transifex](https://www.transifex.com/projects/p/sourcetree-for-windows/)にSourceTree for Windowsの翻訳プロジェクトが今月初め頃に立ち上がったのを見つけて、アナウンスもされない内に勝手に参加して作業した。Mac版からリソースを引き継ぐ用意もあっただろうに悪いことをしたと思う。(追記: 9日に[アナウンス](http://blog.sourcetreeapp.com/2013/12/09/help-translate-sourcetree-for-windows/)が公式サイトに載った。2014年初頭に翻訳の入った版を出したいらしい)
 
 日本語化を試したい人は[こちら](https://bitbucket.org/snipsnipsnip/sourcetree.resources.ja)を参照。
 
