@@ -5,6 +5,7 @@ title: snipsnipsnip.github.io
 author: snipsnipsnip
 url_root: http://snipsnipsnip.github.io
 repos_url: https://github.com/snipsnipsnip/snipsnipsnip.github.io
+atom_feed: http://feeds.feedburner.com/snipsnipsnipgithubio
 
 enable_google_code_prettify: true
 disqus_shortname: ghsgicay6c

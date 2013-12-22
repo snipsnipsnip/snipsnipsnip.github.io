@@ -16,7 +16,7 @@ layout: nil
   <link type="text/html" rel="alternate" href="{{site.url_root}}{{ post.url }}" />
   <title>{{ post.title }}</title>
   <updated>{{ post.date | date_to_xmlschema }}</updated>
-  <content type="html"><![CDATA[{{ post.content | markdownify | xml_escape }}]]></content>
+  <content type="html"><![CDATA[{{ post.content | markdownify }}]]></content>
   </entry>
 {% endif %}
 {% endfor %}
@@ -27,7 +27,7 @@ layout: nil
   <link type="text/html" rel="alternate" href="{{site.url_root}}{{ page.url }}" />
   <title>{{ page.title }}</title>
   <updated>{{ page.date | date_to_xmlschema }}</updated>
-  <content type="html"><![CDATA[{{ page.content | markdownify | xml_escape }}]]></content>
+  <content type="html"><![CDATA[{{ page.content | markdownify }}]]></content>
   </entry>
 {% endif %}
 {% endfor %}
