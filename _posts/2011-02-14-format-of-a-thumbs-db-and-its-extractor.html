@@ -2,22 +2,23 @@
 layout: page
 title: Thumbs.dbのフォーマット調べて抽出ツール作った
 date: 2011-02-14 02:26+0900
-excerpt: <a href="https://gist.github.com/raw/819809/7df6a9196a000caab8e9383b897a3d75ccb890b1/dumpthumbs.exe">dumpthumbs.exe</a><br/>要はアーカイブの一種らしい。
+excerpt: <a href="https://gist.github.com/raw/819809/7df6a9196a000caab8e9383b897a3d75ccb890b1/dumpthumbs.exe">dumpthumbs.exe</a><br/>要はjpgファイルをまとめたzipみたいな物らしい。
 ---
 <ul><li><a href="https://gist.github.com/raw/819809/7df6a9196a000caab8e9383b897a3d75ccb890b1/dumpthumbs.exe">ダウンロード: dumpthumbs.exe</a></li></ul>
 
-thumbs.dbがあるフォルダか、thumbs.db自体をこのツールにドラッグして使う。その場にjpgファイルが吐き出される。
+<p>thumbs.dbがあるフォルダか、thumbs.db自体をこのツールにドラッグして使う。その場にjpgファイルが吐き出される。
 
 <h3>概要</h3>
 
-WindowsのThumbs.dbはOLE Compound Documentとか<a href="http://msdn.microsoft.com/en-us/library/aa380369(VS.85).aspx">Structured Storage</a>という形式でできている。Wordのdocファイルにも使われていて、要はアーカイブの一種らしい。
+<p>WindowsのThumbs.dbはOLE Compound Documentとか<a href="http://msdn.microsoft.com/en-us/library/aa380369(VS.85).aspx">Structured Storage</a>という形式でできている。Wordのdocファイルにも使われていて、要はアーカイブの一種らしい。
 
-OLE形式のことは割愛。ここではそのOLEなる形式でどういうファイルが入っているかだけ書く。
+<p>OLE形式のことは割愛。ここではそのOLEなる形式でどういうファイルが入っているかだけ書く。
 
-これを読み込むライブラリは、Rubyではruby-oleジェム、PerlならWin32::OLE、JavaならApache POIのPOIFS、CならCOMのIStorageとかPOLEというライブラリがある。
+<p>これを読み込むライブラリは、Rubyではruby-oleジェム、PerlならWin32::OLE、JavaならApache POIのPOIFS、Cなら本家COMのIStorageとかオープンソースでPOLEというライブラリがある。
 
 <h3>ディレクトリの内容</h3>
-そのたぐいのライブラリで解凍すると、中身のディレクトリはこうなっている。フォルダはなく、いくつかバイナリファイルが入っているだけ。
+<p>そのたぐいのライブラリで内容を見ると、Thumbs.dbの中には以下のようなファイルが収まっている。
+<p>フォルダはなく、バイナリファイルだけからなる。
 <ul>
 	<li>Catalog</li>
 	<li>01</li>
@@ -30,15 +31,13 @@ OLE形式のことは割愛。ここではそのOLEなる形式でどういう�
 	<li>5</li>
 	<li>...</li>
 </ul>
-内容としては、名前が数字のファイルがJPEGファイルにヘッダがくっついたもので、Catalogにその数字と実ファイル名の対応付けが記録されている。
+<p>内容としては、<tt>01, 2, 11, 2, 21..</tt>のような名前が数字のファイルは(先頭にタグのついた)JPEGファイル。<tt>Catalog</tt>には各番号と元のファイル名の対応付けが記録されている。
 
-各サムネイルにはIDがついている。
+<p>各サムネイルにはIDがついていて、それを文字列として反転するとファイル名になる。
 
-不思議なのはIDとファイル名が文字列として反転しているというところ。
-
-idが<strong>5</strong>のサムネイルは<strong>5</strong>というファイルに入っているが、idが<strong>13</strong>のサムネイルは<strong>31</strong>というファイルに入る。
+<p>idが<strong>5</strong>のサムネイルは<strong>5</strong>というファイルに入っているが、idが<strong>13</strong>のサムネイルは<strong>31</strong>というファイルに入る。
 <h3>カタログ (<tt>Catalog</tt> ファイル)</h3>
-Catalogのフォーマットは先頭からこう。数値は全てUint32LE。
+<p>Catalogのフォーマットは先頭からこう。数値は全てUint32LE。
 <ul>
 	<li>ヘッダが16バイト
 <ul>
@@ -50,39 +49,40 @@ Catalogのフォーマットは先頭からこう。数値は全てUint32LE。
 	<li>エントリ全体のサイズ</li>
 	<li>ID</li>
 	<li>更新日時</li>
-	<li>何かの数値</li>
+	<li>(何かの数値?)</li>
 	<li>UTF16LEでファイル名</li>
 	<li>0でパディング</li>
 </ul>
 </li>
 </ul>
 <h3>サムネイル (<tt>0, 1, 11, 2, 21 ..</tt>)</h3>
-サムネイル画像のファイルの内容は以下のとおり。
+<p>サムネイル画像のファイルの内容は以下のとおり。
 <ul>
 	<li>ヘッダ (12バイトか16バイト)</li>
 	<li>JPEGファイル</li>
 </ul>
 
-ヘッダの長さは可変というか、12バイトか16バイトかのどちらからしい。
+<p>ヘッダの長さは可変。12バイトか16バイトかのどちらからしい。
 
-本来ならヘッダにあるタイプを調べるべきなのだろうが、とりあえずJPEGファイルの頭にあるマジックナンバー(<tt>0xFF 0xD8</tt>)を目印にすればヘッダの内容を読む必要はない。
+<p>本来ならヘッダにあるタイプを調べるべきなのだろうが、とりあえずJPEGファイルの頭にあるマジックナンバー(<tt>0xFF 0xD8</tt>)を目印にすればヘッダの内容を読む必要はない。
 
 <h3>実装</h3>
-画像を吐き出すだけのツールを作るなら、流れはこうなる。
+<p>画像を吐き出すだけのツールを作るなら、流れはこうなる。
 <ul>
 	<li>Structured Storageのライブラリを使ってthumbs.dbを読み込む</li>
 	<li>Catalogファイルを取り出して上のフォーマットで解釈する</li>
 	<li>各ファイル名についてサムネイルを取り出し、JPEGファイルをその辺に書き出す</li>
 </ul>
-これをRubyとC++で書いた。
+<p>これをRubyとC++で書いた。
 <ul>
 	<li><a href="http://gist.github.com/818260">Ruby</a></li>
 	<li><a href="http://gist.github.com/819809">C++</a></li>
 	<li><a href="https://gist.github.com/raw/819809/7df6a9196a000caab8e9383b897a3d75ccb890b1/dumpthumbs.exe">dumpthumbs.exe: C++をコンパイルしたやつ</a></li>
 </ul>
 <h3>手抜き</h3>
-以上は<a href="http://libforensics.googlecode.com/">libforensics</a>というPythonのライブラリの<a href="http://www.google.com/codesearch/p?#yr8RazdpGoM/code/lf/win/shell/thumbsdb/objects.py"><tt>lf.win.shell.thumbsdb</tt>のコード</a>を読んだだけなので、このライブラリを使うのが一番早いかもしれない。
+<p>こういった解体処理をする必要があるのは元のファイル名が欲しいときだけで、サムネイル画像を取り出したいだけならまじめに読み込む必要はない。
 
-こういった解体処理をする必要があるのは元のファイル名が欲しいときだけで、サムネイル画像を取り出したいだけならまじめに読み込む必要はない。
+<p>無圧縮で暗号化もされていないので、thumbs.dbを普通に開き、JPEGのSOI(<tt>0xFF 0xD8</tt>)とEOI(<tt>0xFF 0xD9</tt>)を探して次々書き出せばすむ。
 
-無圧縮で暗号化もされていないので、thumbs.dbを普通に開き、JPEGのSOI(<tt>0xFF 0xD8</tt>)とEOI(<tt>0xFF 0xD9</tt>)を探して次々書き出せばすむ。
+<h3>参考</h3>
+<p>以上は<a href="http://libforensics.googlecode.com/">libforensics</a>というPythonのライブラリの<a href="http://www.google.com/codesearch/p?#yr8RazdpGoM/code/lf/win/shell/thumbsdb/objects.py"><tt>lf.win.shell.thumbsdb</tt>のコード</a>を読んだだけなので、このライブラリを使うのが一番早いかもしれない。
