@@ -7,7 +7,7 @@ h1, h2, h3, h4, h5, h6, h7, .giant {
   font-weight: normal;
   background: url(/s/ricepaper.png);
   padding: 0.5em 1em;
-  margin: 1em 0 1em 2em;
+  margin: 1em 0 1em 5%;
   border-radius: 20px 0 0 20px;
   box-shadow: inset 5px 5px 0px rgba(0,0,0,0.2);
   clear: both;
@@ -28,7 +28,6 @@ p {
   padding: 0;
   margin: 0.2em 1em;
   text-indent: 1em;
-  line-height: 1.2;
 }
 
 pre, ul, ol, dl {
@@ -52,11 +51,6 @@ ul ul, ul ol, ol ul, ol ol {
   margin: 0 0 0 3em;
   padding-left: 0;
   border-left: none;
-}
-
-ul p, ol p {
-  text-indent: 0;
-  margin: 0;
 }
 
 pre {
@@ -163,8 +157,8 @@ td, th {
   color: #999;
   font-size: smaller;
   text-align: right;
-  padding: 0
-  margin: -1em 0 0 0}
+  padding: 0;
+}
 
 .text {
   background-color: white;
@@ -174,7 +168,7 @@ td, th {
 
 .group {
   list-style-type: none;
-  margin: 0;
+  margin-right: 0;
 }
 
 .group li {
