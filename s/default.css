@@ -99,7 +99,7 @@ li {
 }
 
 p img {
-  width: 50%;
+  max-width: 50%;
   margin: 1em;
 }
 
