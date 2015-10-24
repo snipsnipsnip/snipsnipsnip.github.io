@@ -5,7 +5,7 @@ title: index
 <div class="text">
 <h1><a href="{{site.repos_url}}">{{site.title}}</a></h1>
 <section>
-{% include repos.md %}
+{% capture repos %}{% include repos.md %}{% endcapture %}{{ repos | markdownify }}
 </section>
 <section>
 <h2>pages</h2>
