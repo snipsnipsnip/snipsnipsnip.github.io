@@ -1,1 +1,1 @@
-# http://snipsnipsnip.github.io/
+# https://snipsnipsnip.github.io/
