@@ -5,7 +5,9 @@ title: index
 <div class="text">
 <h1><a href="{{site.repos_url}}">{{site.title}}</a></h1>
 <section>
-{{include repos.md}}
+{% include repos.md %}
+</section>
+<section>
 <h2>pages</h2>
 <ul class="group">
 {% for page in site.pages | sort: 'date' reversed %}
